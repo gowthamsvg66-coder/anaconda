@@ -1,58 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Python Programs</title>
+<title>Programs</title>
 
 <style>
 
 body{
-font-family:Arial;
+font-family: Arial;
 background:#f5f6fa;
-margin:0;
-}
-
-header{
-background:#2c3e50;
-color:white;
-padding:20px;
-text-align:center;
 }
 
 .container{
 display:flex;
 flex-wrap:wrap;
-justify-content:center;
-margin-top:20px;
 }
 
 .card{
 background:white;
+padding:15px;
+margin:10px;
 width:250px;
-padding:20px;
-margin:15px;
-border-radius:10px;
-box-shadow:0 4px 8px rgba(0,0,0,0.2);
 cursor:pointer;
-}
-
-.card:hover{
-background:#ecf0f1;
+box-shadow:0 0 5px gray;
 }
 
 #viewer{
-margin:30px;
-padding:20px;
-background:white;
-border-radius:10px;
-box-shadow:0 0 10px gray;
 white-space:pre-wrap;
+background:white;
+padding:20px;
+margin-top:20px;
 font-family:monospace;
-overflow:auto;
-}
-
-button{
-padding:10px;
-margin:10px;
 }
 
 </style>
@@ -61,34 +38,30 @@ margin:10px;
 
 <body>
 
-<header>
-<h1>Python</h1>
-</header>
+<h1>exam</h1>
 
 <div class="container">
 
-<div class="card" onclick="loadCode('1bank.py')">Bank Program</div>
-<div class="card" onclick="loadCode('prog-1.py')">Program 1</div>
-<div class="card" onclick="loadCode('prog-2.py')">Program 2</div>
-<div class="card" onclick="loadCode('prog-3.py')">Program 3</div>
-<div class="card" onclick="loadCode('prog-4.py')">Program 4</div>
-<div class="card" onclick="loadCode('prog-5.py')">Program 5</div>
-<div class="card" onclick="loadCode('prog-6.py')">Program 6</div>
-<div class="card" onclick="loadCode('prog-7.py')">Program 7</div>
-<div class="card" onclick="loadCode('prog-8 bank.py')">Bank GUI</div>
-<div class="card" onclick="loadCode('prog-9.py')">Program 9</div>
-<div class="card" onclick="loadCode('prog-10.py')">Program 10</div>
-<div class="card" onclick="loadCode('prog-11.py')">Calculator</div>
+<div class="card" onclick="loadCode('bank.txt')">Bank Program</div>
+<div class="card" onclick="loadCode('prog1.txt')">Program 1</div>
+<div class="card" onclick="loadCode('prog2.txt')">Program 2</div>
+<div class="card" onclick="loadCode('prog3.txt')">Program 3</div>
+<div class="card" onclick="loadCode('prog4.txt')">Program 4</div>
+<div class="card" onclick="loadCode('prog5.txt')">Program 5</div>
+<div class="card" onclick="loadCode('prog6.txt')">Program 6</div>
+<div class="card" onclick="loadCode('prog7.txt')">Program 7</div>
+<div class="card" onclick="loadCode('prog8.txt')">Program 8</div>
+<div class="card" onclick="loadCode('prog9.txt')">Program 9</div>
+<div class="card" onclick="loadCode('prog10.txt')">Program 10</div>
+<div class="card" onclick="loadCode('prog11.txt')">Program 11</div>
 
 </div>
 
-<center>
 <button onclick="copyCode()">Copy Code</button>
-</center>
 
-<div id="viewer">
-Click any program to view code...
-</div>
+<pre id="viewer">
+Click program to view code
+</pre>
 
 <script>
 
@@ -101,8 +74,9 @@ document.getElementById("viewer").textContent = data;
 }
 
 function copyCode(){
-var text = document.getElementById("viewer").innerText;
-navigator.clipboard.writeText(text);
+navigator.clipboard.writeText(
+document.getElementById("viewer").innerText
+);
 alert("Code Copied!");
 }
 

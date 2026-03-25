@@ -1,0 +1,25 @@
+import bank
+
+while True:
+    print("\n--- Mini Banking System ---")
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Balance Inquiry")
+    print("4. Exit")
+    choice = int(input("Enter your choice: "))
+    try:
+        if choice == 1:
+            amount = float(input("Enter deposit amount: "))
+            print("Balance after deposit:", banking.deposit(amount))
+        elif choice == 2:
+            amount = float(input("Enter withdrawal amount: "))
+            print("Balance after withdrawal:", banking.withdraw(amount))
+        elif choice == 3:
+            print("Current Balance:", banking.check_balance())
+        elif choice == 4:
+            print("Thank you for using the banking system.")
+            break
+        else:
+            print("Invalid choice!")
+    except Exception as e:
+        print("Error:", e)

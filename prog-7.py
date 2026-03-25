@@ -1,0 +1,79 @@
+
+file_name = "students.txt"
+
+def add_student():
+    roll = input("Enter Roll Number: ")
+    name = input("Enter Name: ")
+    marks = input("Enter Marks: ")
+
+    with open(file_name, "a") as f:
+        f.write(roll + "," + name + "," + marks + "\n")
+
+    print("Student added successfully!\n")
+
+def search_student():
+    roll_search = input("Enter Roll Number to search: ")
+    found = False
+
+    with open(file_name, "r") as f:
+        for line in f:
+            data = line.strip().split(",")
+
+            if data[0] == roll_search:
+                print("Student Found!")
+                print("Roll:", data[0])
+                print("Name:", data[1])
+                print("Marks:", data[2])
+                found = True
+                break
+
+    if not found:
+        print("Student not found.\n")
+
+def update_marks():
+    roll_update = input("Enter Roll Number to update: ")
+    new_marks = input("Enter New Marks: ")
+
+    updated_data = []
+    found = False
+
+    with open(file_name, "r") as f:
+        for line in f:
+            data = line.strip().split(",")
+
+            if data[0] == roll_update:
+                data[2] = new_marks
+                found = True
+                print("Marks updated successfully!")
+
+            updated_data.append(",".join(data))
+
+    # Rewrite updated data into file
+    with open(file_name, "w") as f:
+        for record in updated_data:
+            f.write(record + "\n")
+
+    if not found:
+        print("Student not found.\n")
+
+
+# ---------------- MENU ----------------
+while True:
+    print("\n1. Add Student")
+    print("2. Search Student")
+    print("3. Update Marks")
+    print("4. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        add_student()
+    elif choice == "2":
+        search_student()
+    elif choice == "3":
+        update_marks()
+    elif choice == "4":
+        print("Program exited.")
+        break
+    else:
+        print("Invalid choice!")

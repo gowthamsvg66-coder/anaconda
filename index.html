@@ -32,21 +32,27 @@ padding:20px;
 margin:15px;
 border-radius:10px;
 box-shadow:0 4px 8px rgba(0,0,0,0.2);
+cursor:pointer;
 }
 
-.card a{
-display:block;
-margin-top:10px;
-background:#3498db;
-color:white;
-text-decoration:none;
-padding:8px;
-text-align:center;
-border-radius:5px;
+.card:hover{
+background:#ecf0f1;
 }
 
-.card a:hover{
-background:#2980b9;
+#viewer{
+margin:30px;
+padding:20px;
+background:white;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+white-space:pre-wrap;
+font-family:monospace;
+overflow:auto;
+}
+
+button{
+padding:10px;
+margin:10px;
 }
 
 </style>
@@ -56,72 +62,51 @@ background:#2980b9;
 <body>
 
 <header>
-<h1>My Python Programs - Gowtham</h1>
+<h1>Python</h1>
 </header>
 
 <div class="container">
 
-<div class="card">
-<h3>Bank Program</h3>
-<a href="1bank.py">View Code</a>
-</div>
-
-<div class="card">
-<h3>Program 1</h3>
-<a href="prog-1.py">View Code</a>
-</div>
-
-<div class="card">
-<h3>Program 2</h3>
-<a href="prog-2.py">View Code</a>
-</div>
-
-<div class="card">
-<h3>Program 3</h3>
-<a href="prog-3.py">View Code</a>
-</div>
-
-<div class="card">
-<h3>Program 4</h3>
-<a href="prog-4.py">View Code</a>
-</div>
-
-<div class="card">
-<h3>Program 5</h3>
-<a href="prog-5.py">View Code</a>
-</div>
-
-<div class="card">
-<h3>Program 6</h3>
-<a href="prog-6.py">View Code</a>
-</div>
-
-<div class="card">
-<h3>Program 7</h3>
-<a href="prog-7.py">View Code</a>
-</div>
-
-<div class="card">
-<h3>Bank GUI Program</h3>
-<a href="prog-8 bank.py">View Code</a>
-</div>
-
-<div class="card">
-<h3>Program 9</h3>
-<a href="prog-9.py">View Code</a>
-</div>
-
-<div class="card">
-<h3>Program 10</h3>
-<a href="prog-10.py">View Code</a>
-</div>
-
-<div class="card">
-<h3>Calculator GUI</h3>
-<a href="prog-11.py">View Code</a>
-</div>
+<div class="card" onclick="loadCode('1bank.py')">Bank Program</div>
+<div class="card" onclick="loadCode('prog-1.py')">Program 1</div>
+<div class="card" onclick="loadCode('prog-2.py')">Program 2</div>
+<div class="card" onclick="loadCode('prog-3.py')">Program 3</div>
+<div class="card" onclick="loadCode('prog-4.py')">Program 4</div>
+<div class="card" onclick="loadCode('prog-5.py')">Program 5</div>
+<div class="card" onclick="loadCode('prog-6.py')">Program 6</div>
+<div class="card" onclick="loadCode('prog-7.py')">Program 7</div>
+<div class="card" onclick="loadCode('prog-8 bank.py')">Bank GUI</div>
+<div class="card" onclick="loadCode('prog-9.py')">Program 9</div>
+<div class="card" onclick="loadCode('prog-10.py')">Program 10</div>
+<div class="card" onclick="loadCode('prog-11.py')">Calculator</div>
 
 </div>
+
+<center>
+<button onclick="copyCode()">Copy Code</button>
+</center>
+
+<div id="viewer">
+Click any program to view code...
+</div>
+
+<script>
+
+function loadCode(file){
+fetch(file)
+.then(response => response.text())
+.then(data => {
+document.getElementById("viewer").textContent = data;
+});
+}
+
+function copyCode(){
+var text = document.getElementById("viewer").innerText;
+navigator.clipboard.writeText(text);
+alert("Code Copied!");
+}
+
+</script>
 
 </body>
 </html>
